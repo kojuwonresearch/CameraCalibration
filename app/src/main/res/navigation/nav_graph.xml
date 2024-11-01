@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/deviceSetupFragment">
+
+    <fragment
+        android:id="@+id/deviceSetupFragment"
+        android:name="com.ai.cameracalibration.ui.setup.DeviceSetupFragment"
+        android:label="Device Setup">
+        <action
+            android:id="@+id/action_to_master"
+            app:destination="@id/masterRecordingFragment" />
+        <action
+            android:id="@+id/action_to_slave"
+            app:destination="@id/slaveRecordingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/masterRecordingFragment"
+        android:name="com.ai.cameracalibration.ui.setup.fragments.MasterRecordingFragment"
+        android:label="Master Recording">
+        <action
+            android:id="@+id/action_to_slave"
+            app:destination="@id/slaveRecordingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/slaveRecordingFragment"
+        android:name="com.ai.cameracalibration.ui.setup.fragments.SlaveRecordingFragment"
+        android:label="Slave Recording">
+        <!-- 메인 화면으로 돌아가는 액션 추가 -->
+        <action
+            android:id="@+id/action_slaveRecordingFragment_to_deviceSetupFragment"
+            app:destination="@id/deviceSetupFragment"
+            app:popUpTo="@id/deviceSetupFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
